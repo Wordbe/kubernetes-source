@@ -16,7 +16,7 @@ spec:
   storageClassName: local-storage
   claimRef:
     name: jenkins-pv-claim
-    namespace: devops-tools
+    namespace: jenkins-batch
   capacity:
     storage: 10Gi
   accessModes:
@@ -30,18 +30,18 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - worker-node01
+          - docker-desktop
 
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: jenkins-pv-claim
-  namespace: devops-tools
+  namespace: jenkins-batch
 spec:
   storageClassName: local-storage
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteOnce 
   resources:
     requests:
       storage: 3Gi
